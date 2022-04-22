@@ -1,0 +1,80 @@
+# -------------------------------------
+# Phenom Productions Presents...
+# mod: Phenom json Dropfile Reader v1.0
+# author: Smooth <Phenom>
+# date created: March 12, 2022
+# modified: April 10, 2022
+# -------------------------------------
+
+import os
+import json
+from mystic_bbs import *
+
+# -----------------------------------
+# define path to Phenom JSON dropfile
+# ----------------------------------- 
+jsonpath = 'temp' + mci2str('ND') + '/phenomdrop.json'
+
+# ---------------------------
+# Check to see if file exists
+# ---------------------------
+
+dropfileExists = os.path.exists(jsonpath)
+
+if(dropfileExists):
+	writeln('|10Phenom Dropfile found.\n')
+else:
+	writeln('Phenom Dropfile not found.\n')
+
+# Dynamically writes a dropfile based on the user's current node #
+
+def YesNo(decision):
+  if decision == False:
+    return "No"
+  else:
+    return "Yes"
+
+def SecurityDesc(seclevel):
+  if seclevel == 255:
+    return "Sysop"
+  else:
+    return "Standard User"
+
+# --------------------------------------------
+# If Phenom JSON dropfile exists load dropfile
+# --------------------------------------------
+if(dropfileExists):
+  f = open(jsonpath)
+  phenomdrop = json.load(f)
+  
+# -------------
+# Dropfile Keys
+# -------------
+# * node
+# * username
+# * seclevel
+# * timeleft
+# * cols
+# * rows
+# * loadablefonts
+# * xtendpalette
+
+  # ----------------
+  # Output JSON Data
+  # ----------------
+  writeln('|12JSON Data:')
+  writeln('|15----------|11')
+  writeln(str(phenomdrop))
+  writeln('\n')
+  writeln('-----')
+  writeln('|03Node#|08:|11 ' + str(phenomdrop["node"]))
+  writeln('|03BBS Name|08:|11 ' + phenomdrop["bbsname"])
+  writeln('|03username|08:|11 ' + phenomdrop["username"])
+  writeln('|03Security Level|08:|11 ' + SecurityDesc(phenomdrop["seclevel"]))
+  writeln('|03time left|08:|11 ' + str(phenomdrop["timeleft"]) + ' |15mins|11')
+  writeln('|03columns|08:|11 ' + str(phenomdrop["cols"]))
+  writeln('|03rows|08:|11 ' + str(phenomdrop["rows"]))  
+  writeln('|03supports loadable fonts?|08:|11 ' + YesNo(phenomdrop["loadablefonts"]))
+  writeln('|03supports extended palette?|08:|11 ' + YesNo(phenomdrop["xtendpalette"]))
+
+writeln("|PA")

@@ -1,0 +1,103 @@
+# ------------------------------------------
+# Phenom Productions Presents...
+# mod: Phenom Dropfile v1.0
+# author: Smooth <Phenom>
+# date created: March 12, 2022
+# modified: April 10, 2022
+# ------------------------------------------
+
+from mystic_bbs import *
+import json
+
+# ---------------------------------------------------------------------------
+# Reads in the values for the remote user's terminal size in columns and rows
+# ---------------------------------------------------------------------------
+# x = columns and y = rows
+
+cols,rows = termsize()
+
+# ----------------------------
+# Define Phenom Dropfile Class
+# ----------------------------
+class PhenomDropFile:
+	node = 0
+	bbsname = ""
+	username = ""
+	seclevel = ""
+	timeleft = ""
+	cols = 0
+	rows = 0
+	loadablefonts = bool(0)
+	xtendpalette = bool(0)
+
+# --------------------------------------
+# Determine which terminal is connecting 
+# --------------------------------------
+whichterminal = termtype()
+
+if(whichterminal == "ANSI-256COLOR-RGB") or (cols>80):
+  terminal = "Netrunner"
+elif (whichterminal == "SYNCTERM"):
+  terminal = "Syncterm"
+else:
+  terminal = "ANSI-Term"
+
+if(terminal == "Netrunner") or (terminal == "ANSI-Term"):
+  loadablefonts = bool(0)
+else:
+  loadablefonts = bool(1)
+
+if(terminal == "Syncterm") or (terminal == "Netrunner"):
+  xtendpalette = bool(1)
+else:
+  xtendpalette = bool(0)
+
+# ----------------------------
+# Initialize phenomdrop object
+# ----------------------------
+phenomdrop = PhenomDropFile()
+phenomdrop.node = int(mci2str('ND'))
+phenomdrop.bbsname = mci2str('BN')
+phenomdrop.username = mci2str('UH')
+phenomdrop.seclevel = int(mci2str('SL'))
+phenomdrop.timeleft = int(mci2str('TL'))
+phenomdrop.cols = cols
+phenomdrop.rows = rows
+phenomdrop.loadablefonts = loadablefonts
+phenomdrop.xtendpalette = xtendpalette
+
+# ---------------------------------
+# Convert phenomdrop object to json
+# ---------------------------------
+PhenomDropStr = json.dumps(phenomdrop.__dict__)
+
+# ---------------------------------
+# Generate standard dropfile format
+# ---------------------------------
+def generateTxtFile():
+	with open('temp' + str(phenomdrop.node) + '/phenomdrop.txt', 'w') as f:
+
+	# Write Text data for drop file (line by line)
+
+		f.write(str(phenomdrop.node) + '\n')
+		f.write(str(phenomdrop.bbsname) + '\n')
+		f.write(phenomdrop.username + '\n')
+		f.write(str(phenomdrop.seclevel) + '\n')
+		f.write(str(phenomdrop.timeleft) + '\n')
+		f.write(str(phenomdrop.cols) + '\n')
+		f.write(str(phenomdrop.rows) + '\n')
+		f.write(str(phenomdrop.loadablefonts) + '\n')
+		f.write(str(phenomdrop.xtendpalette) + '\n')
+
+# -----------------------------
+# Generate Phenom JSON dropfile
+# -----------------------------
+def generateJSONFile():
+	with open('temp' + mci2str("ND") + '/phenomdrop.json', 'w') as f:
+	
+	# Write JSON data for drop file
+
+		f.write(PhenomDropStr)
+
+generateTxtFile()
+generateJSONFile()

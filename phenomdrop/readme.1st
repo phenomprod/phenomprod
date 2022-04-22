@@ -1,0 +1,151 @@
+
+                   $$sss  s$"                              5m
+                   $$  $$ $$
+                   $$"""" $$""$e $"//  $$""s  $$""$$ $$sssss
+                   $$     $$  $$ $SSSS $$  $$ $$$$$$ $$ $$ $$
+ 
+                         --- P R O D U C T I O N S ---  
+						           EST : 2018 
+
+
+==============================================================================
+ >> RELEASE INFO:
+==============================================================================
+
+       name: Phenom Dropfile Creator/Reader
+   released: April 12, 2022
+    version: 1.1.0
+   filename: PN-DROPFILE11.ZIP
+     author: Smooth <PHENOM>
+       type: [*] mod   [ ] door   [ ] extra
+	     OS: [*] win   [*] linux   [ ] amiga
+		
+ bbs software: [*] Mystic
+               [ ] Synchronet
+			   [ ] C-Net
+			   [ ] Enigma
+			   [ ] DayDream
+			   [ ] Renegade
+			   [ ] Talisman
+			   
+==============================================================================
+ >> DESCRIPTION:
+==============================================================================
+We're constantly supporting legacy door games with old drop files since
+the 90s - early 2000s.  It's now 2022 and a NEW dropfile format should provide
+info that will be usuable and scalable for future doors and mods.
+
+This new Phenom Dropfile format is specific to features enabled on the latest
+version(s) of Mystic BBS (v1.12 a47+) and modern telnet clients such as 
+SyncTerm (v1.1b+) and the most recent prealpha build of Netrunner v2 beta22+.
+
+This drop file will expose information such as:
+-----------------------------------------------
+[int] node      		:(the node(#) that the user is connected to)
+[str] bbsname        	:(bbs name)
+[str] username 			:(user alias unless real names are enforced)
+[int] seclevel 			:(bbs security level)
+[int] timeleft 			:(how much time left does the logon user have)
+[int] cols 				:(remote terminal column length)
+[int] rows 				:(remote terminal row height)
+[bool] loadablefonts	:(support loadable fonts? - true or false)
+[bool] xtendpalette		:(support extended color palette? - true or false)
+	
+The latest Syncterm and Netrunner clients both support extended color palettes
+which allows the to both display more then the standard 16 colors. They
+also support wider screen sizes like 132x37.  Netrunner goes up to 160x50.
+This dropfile will expose those details so that your mod and doorgames can
+determine what or how to display graphics or data.  We can now create 
+responsive applications based on their remote user's screen size.  This 
+dropfile can also determine whether your remote user has the capabilities to
+support loadable fonts.
+
+==============================================================================
+ >> ARCHIVE INCLUDES:
+==============================================================================
+
+** Phenom General Info
+----------------------
+readme.1st                      : Detailed information for this release.
+newmember.txt                   : NEW MEMBER (PHENOM PROD) Registration Form
+file_id.diz                     : ASCII Diz file for this release.
+file_id.ans                     : ANSI Diz file for this release.   
+  
+ 
+** Release Files
+----------------
+phenomdrop.mpy                  : generates dropfile(s)
+readjson.mpy	                : sample script that reads dropfile data
+
+
+==============================================================================
+ >> PREREQUISITES:
+==============================================================================
+
+Python 3+
+
+
+==============================================================================
+ >> INSTALLATION INSTRUCTIONS (STEP-BY-STEP):
+==============================================================================
+
+1) There's two files included (phenomdrop.mpy and readjson.mpy)  Both files
+should be unzipped into your mystic scripts directory.
+
+Example path: /mystic/themes/default/scripts
+
+Once you've added both files to your scripts directory you'll have to add 
+references to these two files to execute them.  The readjson.mpy is just an 
+sample script of how to read the data from the Phenom json drop file.
+
+2) The phenomdrop.mpy mod will generate two different phenom drop files. One
+will be in json format and the other will be generated like the legacy drop
+files where the user's details will be listed one item per line.
+
+The best menu to add this to is the prelogin.mnu.  Use your menu editor to
+edit the prelogin menu and add a new entry in the Action List area.  When
+the editor loads a menu file it automatically starts by editingon the'
+"Display Text" option (normally the first option of the menu editor.  Hit
+your "Tab" key to switch to the bottom half of the UI which allows you to
+Add/Edit/Delete Action items.  You'll want to have it at the very top of the
+Action List.  Hit /I to insert a new item.  A new item will be listed as
+a "Go to new menu (GO)" command.  You'll want to edit and change this with
+the following configuration.
+
+Command		:	(GZ) Execute Python 3 Script
+Data		:	phenomdrop
+Access		:
+Grid Event  :	Selected
+
+If you would like to test out the readjson.mpy script.  Add it to any menu
+after the prelogin menu loads.  It could be a custom menu you've created or 
+even on the main/demo menus.  
+
+You'll have to modify the Action item for a menu command with the following 
+settings.
+
+Command		:	(GZ) Execute Python 3 Script
+Data		:	readjson
+Access		:
+Grid Event	: 	Selected
+
+
+You can create your mod or door in any language as the creator script will
+generate a standard drop file and the new json dropfile.  The dropfile will
+always be accessible to all of your mods and doors until the user exits the
+BBS.  Mystic automatically does a cleanup on the tempX directories where the
+dropfiles are created in.  If a user hangs up abnormally during their session,
+it's OK.  The next user who logs onto the same node will generate and
+overwrite the existing file if it's still there.  
+
+==============================================================================
+ >> PHENOM DISTRIBUTION
+==============================================================================
+
+This and ALL PHENOM PRODUCTION releases can be found on numerous Bulletin 
+Board systems. All releases can also be located on the OFFICIAL PHENOM 
+PRODUCTION WEBSITE (https://www.phenomprod.com).
+
+==============================================================================
+ >> CREATED: February 27, 2022                      MODIFIED: March 3, 2022
+==============================================================================
