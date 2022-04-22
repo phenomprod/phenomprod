@@ -1,0 +1,105 @@
+                ____________________ ___  __ _____ __ 5m__
+                \      \  !   |   _/^\  \|  |     |  \_/  |
+                <_  />  | :   |  _>__|      |  :  |       |
+                 |   __/      |     <|      |  !  |  \_/  |
+                 |___\|___|___|_____/___\___|_ ___|___|___|
+------------------------------------------------------------------------------
+                   		   p r o d u c t i o n s 
+------------------------------------------------------------------------------
+
+==============================================================================
+ >> RELEASE INFO:
+==============================================================================
+
+       name: phenom release name (example: MRChat)
+   released: <date>
+    version: 1.0.0
+   filename: PN-XXXXXXXXXXXXXX.ZIP
+     author: authorNAME <PHENOM>
+       type: [ ] mod   [ ] door   [ ] extra
+	     OS: [ ] win   [ ] linux   [ ] amiga
+		
+ bbs software: [ ] Mystic
+               [ ] Sychronet
+			   [ ] C-Net
+			   [ ] Enigma
+			   [ ] DayDream
+			   [ ] Renegade
+			   [ ] Talisman
+			   
+==============================================================================
+ >> DESCRIPTION:
+==============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+==============================================================================
+ >> ARCHIVE INCLUDES:
+==============================================================================
+
+** Phenom General Info
+----------------------
+readme.1st                      : Detailed information for this release.
+newmember.txt                   : NEW MEMBER (PHENOM PROD) Registration Form
+file_id.diz                     : ASCII Diz file for this release.
+file_id.ans                     : ANSI Diz file for this release.
+ 
+ 
+** Release Files
+----------------
+ 
+modname.exe                          - main executable
+modname.cfg                          - configuration file
+/resources/main.ans                  - intro screen
+/resources/instructions.ans          - instructions screen
+
+==============================================================================
+ >> PREREQUISITES:
+==============================================================================
+
+Example: Python 2.7
+
+
+==============================================================================
+ >> INSTALLATION INSTRUCTIONS (STEP-BY-STEP):
+==============================================================================
+
+1) Install files....
+
+
+
+
+2) Configure mod/door....
+
+
+
+
+
+
+
+
+
+
+
+
+
+==============================================================================
+ >> PHENOM DISTRIBUTION
+==============================================================================
+
+This and ALL PHENOM PRODUCTION releases can be found on numerous Bulletin 
+Board systems. All releases can also be located on the OFFICIAL PHENOM 
+PRODUCTION WEBSITE (https://www.phenomprod.com).
+
+==============================================================================
+ >> CREATED: February 27, 2022                      MODIFIED: March 3, 2022
+==============================================================================
