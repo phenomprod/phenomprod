@@ -20,13 +20,14 @@
        type: [ ] mod   [ ] door   [ ] extra
 	     OS: [ ] win   [ ] linux   [ ] amiga
 		
- bbs software: [ ] Mystic
+ bbs software: 
+               [ ] Mystic
                [ ] Sychronet
-	             [ ] C-Net
-	             [ ] Enigma
-	             [ ] DayDream
-	             [ ] Renegade
-	             [ ] Talisman
+               [ ] C-Net
+               [ ] Enigma
+               [ ] DayDream
+               [ ] Renegade
+               [ ] Talisman
 			   
 ==============================================================================
  >> DESCRIPTION:
